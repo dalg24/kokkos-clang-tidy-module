@@ -14,3 +14,9 @@ add_library(KokkosClangTidyModule MODULE
 target_include_directories(KokkosClangTidyModule PRIVATE ${CLANG_INCLUDE_DIRS})
 target_link_libraries(KokkosClangTidyModule PRIVATE clang-tidy)
 target_compile_features(KokkosClangTidyModule PRIVATE cxx_std_17)
+
+option(RUN_TESTS "Run the tests for the clang-tidy module" OFF)
+if(RUN_TESTS)
+  enable_testing()
+  add_subdirectory(tests)
+endif()
