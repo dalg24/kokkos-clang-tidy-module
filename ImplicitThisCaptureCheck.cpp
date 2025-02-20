@@ -14,7 +14,8 @@
 #include "KokkosMatchers.h"
 #include "clang/AST/ASTContext.h"
 #include "clang/ASTMatchers/ASTMatchFinder.h"
-#include "llvm/ADT/Optional.h"
+
+#include <optional>
 
 using namespace clang::ast_matchers;
 
@@ -23,18 +24,18 @@ namespace tidy {
 namespace kokkos {
 
 namespace {
-llvm::Optional<SourceLocation> capturesThis(CXXRecordDecl const *CRD) {
+std::optional<SourceLocation> capturesThis(CXXRecordDecl const *CRD) {
   if (!CRD->isLambda()) {
-    return llvm::None;
+    return std::nullopt;
   }
 
   for (auto const &Capture : CRD->captures()) {
     if (Capture.capturesThis()) {
-      return llvm::Optional<SourceLocation>(Capture.getLocation());
+      return Capture.getLocation();
     }
   }
 
-  return llvm::None;
+  return std::nullopt;
 }
 
 } // namespace
@@ -80,7 +81,7 @@ void ImplicitThisCaptureCheck::check(const MatchFinder::MatchResult &Result) {
   if (CaptureLocation) {
     diag(Lambda->getBeginLoc(), "Lambda passed to %0 implicitly captures this.")
         << CE->getDirectCallee()->getName();
-    diag(CaptureLocation.getValue(), "the captured variable is used here.",
+    diag(CaptureLocation.value(), "the captured variable is used here.",
          DiagnosticIDs::Note);
   }
 }
