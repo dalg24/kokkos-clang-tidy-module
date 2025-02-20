@@ -6,12 +6,13 @@ endif()
 if(EXISTS "${CMAKE_CURRENT_LIST_DIR}/${CHECK_NAME}-stdout.txt")
   file(READ "${CMAKE_CURRENT_LIST_DIR}/${CHECK_NAME}-stdout.txt" expect_stdout)
   string(REGEX REPLACE "\n+$" "" expect_stdout "${expect_stdout}")
+  string(REGEX REPLACE "PREFIX_DIR" "${CMAKE_CURRENT_LIST_DIR}" expect_stdout "${expect_stdout}")
 else()
   set(expect_stdout "")
 endif()
 
-set(source_file "${RunClangTidy_BINARY_DIR}/${CHECK_NAME}.cxx")
-configure_file("${CMAKE_CURRENT_LIST_DIR}/${CHECK_NAME}.cxx" "${source_file}" COPYONLY)
+set(source_file "${RunClangTidy_BINARY_DIR}/${CHECK_NAME}.cpp")
+configure_file("${CMAKE_CURRENT_LIST_DIR}/${CHECK_NAME}.cpp" "${source_file}" COPYONLY)
 
 file(GLOB header_files RELATIVE "${CMAKE_CURRENT_LIST_DIR}/${CHECK_NAME}" "${CMAKE_CURRENT_LIST_DIR}/${CHECK_NAME}/*")
 file(REMOVE_RECURSE "${RunClangTiy_BINARY_DIR}/${CHECK_NAME}")
@@ -32,6 +33,7 @@ set(command
   ${config_arg}
   "${source_file}"
   --
+  -isystem ${CMAKE_CURRENT_LIST_DIR}/
   )
 execute_process(
   COMMAND ${command}
@@ -72,8 +74,8 @@ function(check_fixit expected fallback_expected actual)
 endfunction()
 
 check_fixit(
-  "${CMAKE_CURRENT_LIST_DIR}/${CHECK_NAME}-fixit.cxx"
-  "${CMAKE_CURRENT_LIST_DIR}/${CHECK_NAME}.cxx"
+  "${CMAKE_CURRENT_LIST_DIR}/${CHECK_NAME}-fixit.cpp"
+  "${CMAKE_CURRENT_LIST_DIR}/${CHECK_NAME}.cpp"
   "${source_file}"
   )
 
