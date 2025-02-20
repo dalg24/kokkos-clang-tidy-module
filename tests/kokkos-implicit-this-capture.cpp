@@ -32,3 +32,32 @@ struct GoodClass {
     });
   }
 };
+
+namespace ConsiderDroppingThis {
+
+KOKKOS_FUNCTION void do_something(int x) { printf("Got int %d\n", x); }
+
+class BadClass {
+  int MyInt = 0;
+
+public:
+  void capturesThis() {
+    Kokkos::parallel_for(
+        Kokkos::RangePolicy<Kokkos::DefaultExecutionSpace>(0,10), 
+        [=](int) { do_something(MyInt); });
+    // CHECK-MESSAGES: :[[@LINE-1]]:9: warning: Lambda passed to parallel_for implicitly captures this. [kokkos-implicit-this-capture]
+  }
+};
+
+class GoodClass {
+  int MyInt = 0;
+
+public:
+  void capturesThis() {
+    Kokkos::parallel_for(
+        Kokkos::RangePolicy<Kokkos::DefaultHostExecutionSpace>(0,10), 
+        KOKKOS_LAMBDA(int) { do_something(MyInt); });
+  }
+};
+
+}
