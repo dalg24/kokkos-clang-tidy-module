@@ -39,7 +39,7 @@ bool explicitlyUsingHostExecutionSpace(CallExpr const *CE,
   for (auto &BN : BNs) {
     if (auto const *E = BN.getNodeAs<Expr>("expr")) {
       if (auto const *TST = E->getType()->getAs<TemplateSpecializationType>()) {
-        if (Reg.match(TST->getArg(0).getAsType().getAsString())) {
+        if (Reg.match(TST->template_arguments()[0].getAsType().getAsString())) {
           return true;
         }
       }
