@@ -43,7 +43,7 @@ std::optional<SourceLocation> capturesThis(CXXRecordDecl const *CRD) {
 ImplicitThisCaptureCheck::ImplicitThisCaptureCheck(StringRef Name,
                                                    ClangTidyContext *Context)
     : ClangTidyCheck(Name, Context) {
-  CheckIfExplicitHost = std::stoi(Options.get("CheckIfExplicitHost", "0"));
+  CheckIfExplicitHost = std::stoi(Options.get("CheckIfExplicitHost", "0").str());
   HostTypeDefRegex =
       Options.get("HostTypeDefRegex", "Kokkos::DefaultHostExecutionSpace");
 }
