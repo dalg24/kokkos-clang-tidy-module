@@ -13,7 +13,7 @@
 #ifndef LLVM_CLANG_TOOLS_EXTRA_CLANG_TIDY_KOKKOS_IMPLICITTHISCAPTURECHECK_H
 #define LLVM_CLANG_TOOLS_EXTRA_CLANG_TIDY_KOKKOS_IMPLICITTHISCAPTURECHECK_H
 
-#include "../ClangTidyCheck.h"
+#include "clang-tidy/ClangTidyCheck.h"
 
 #include <string>
 

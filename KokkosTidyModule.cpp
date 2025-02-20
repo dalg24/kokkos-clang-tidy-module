@@ -10,9 +10,9 @@
 //
 //===----------------------------------------------------------------------===//
 
-#include "../ClangTidy.h"
-#include "../ClangTidyModule.h"
-#include "../ClangTidyModuleRegistry.h"
+#include "clang-tidy/ClangTidy.h"
+#include "clang-tidy/ClangTidyModule.h"
+#include "clang-tidy/ClangTidyModuleRegistry.h"
 #include "ImplicitThisCaptureCheck.h"
 
 namespace clang {
