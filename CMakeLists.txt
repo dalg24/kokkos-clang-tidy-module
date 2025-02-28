@@ -4,12 +4,12 @@ project(CMakeClangTidyModule C CXX)
 find_package(Clang REQUIRED)
 
 add_library(KokkosClangTidyModule MODULE
-  KokkosTidyModule.cpp
+  src/KokkosTidyModule.cpp
 
-  ImplicitThisCaptureCheck.cpp
-  ImplicitThisCaptureCheck.h
-  KokkosMatchers.cpp
-  KokkosMatchers.h
+  src/ImplicitThisCaptureCheck.cpp
+  src/ImplicitThisCaptureCheck.h
+  src/KokkosMatchers.cpp
+  src/KokkosMatchers.h
   )
 target_include_directories(KokkosClangTidyModule PRIVATE ${CLANG_INCLUDE_DIRS})
 target_link_libraries(KokkosClangTidyModule PRIVATE clang-tidy)
