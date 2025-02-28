@@ -13,7 +13,7 @@
 #ifndef LLVM_CLANG_TOOLS_EXTRA_CLANG_TIDY_KOKKOS_ENSUREKOKKOSFUNCTIONCHECK_H
 #define LLVM_CLANG_TOOLS_EXTRA_CLANG_TIDY_KOKKOS_ENSUREKOKKOSFUNCTIONCHECK_H
 
-#include "../ClangTidyCheck.h"
+#include "clang-tidy/ClangTidyCheck.h"
 
 namespace clang {
 namespace tidy {

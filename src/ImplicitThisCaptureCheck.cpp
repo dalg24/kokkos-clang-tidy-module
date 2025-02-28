@@ -47,7 +47,7 @@ std::optional<SourceLocation> capturesThis(CXXRecordDecl const *CRD) {
 ImplicitThisCaptureCheck::ImplicitThisCaptureCheck(StringRef Name,
                                                    ClangTidyContext *Context)
     : ClangTidyCheck(Name, Context) {
-  AllowIfExplicitHost = std::stoi(Options.get("AllowIfExplicitHost", "0"));
+  AllowIfExplicitHost = std::stoi(Options.get("AllowIfExplicitHost", "0").str());
 }
 
 void ImplicitThisCaptureCheck::storeOptions(ClangTidyOptions::OptionMap &Opts) {
@@ -71,7 +71,7 @@ void ImplicitThisCaptureCheck::registerMatchers(MatchFinder *Finder) {
 void ImplicitThisCaptureCheck::check(const MatchFinder::MatchResult &Result) {
   auto const *CE = Result.Nodes.getNodeAs<CallExpr>("x");
 
-  AllowIfExplicitHost = std::stoi(Options.get("AllowIfExplicitHost", "0"));
+  AllowIfExplicitHost = std::stoi(Options.get("AllowIfExplicitHost", "0").str());
 
   auto const *Lambda = Result.Nodes.getNodeAs<CXXRecordDecl>("Lambda");
   auto CaptureLocation = capturesThis(Lambda);

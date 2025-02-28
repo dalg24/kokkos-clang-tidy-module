@@ -30,11 +30,11 @@ TypedefNameDecl const *getTypedefFromFirstTemplateArg(Expr const *E) {
   if (TST == nullptr) {
     return nullptr;
   }
-  if (TST->getNumArgs() < 1) {
+  if (TST->template_arguments().size() < 1) {
     return nullptr;
   }
 
-  auto const *TDT = TST->getArg(0).getAsType()->getAs<TypedefType>();
+  auto const *TDT = TST->template_arguments()[0].getAsType()->getAs<TypedefType>();
   if (TDT == nullptr) {
     return nullptr;
   }
