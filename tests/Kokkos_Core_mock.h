@@ -104,8 +104,8 @@ template <typename... Properties>
 struct PolicyTraits{};
 } // namespace Impl
 
-using DefaultExecutionSpace = Impl::SomeHostExecutionSpace;
-using DefaultHostExecutionSpace = Impl::SomeHostExecutionSpace;
+using DefaultExecutionSpace [[clang::annotate("DefaultExecutionSpace")]] = Impl::SomeHostExecutionSpace;
+using DefaultHostExecutionSpace [[clang::annotate("DefaultHostExecutionSpace")]] = Impl::SomeHostExecutionSpace;
 
 template <class... Properties>
 class RangePolicy : public Impl::PolicyTraits<Properties...>{
