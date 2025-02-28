@@ -34,8 +34,7 @@ public:
   void storeOptions(ClangTidyOptions::OptionMap &Opts) override;
   void check(const ast_matchers::MatchFinder::MatchResult &Result) override;
 private:
-  int CheckIfExplicitHost;
-  std::string HostTypeDefRegex;
+  int AllowIfExplicitHost;
 };
 
 } // namespace kokkos
