@@ -14,26 +14,25 @@
 //
 //@HEADER
 
-#ifndef LLVM_CLANG_TOOLS_EXTRA_CLANG_TIDY_KOKKOS_IMPLICITTHISCAPTURECHECK_H
-#define LLVM_CLANG_TOOLS_EXTRA_CLANG_TIDY_KOKKOS_IMPLICITTHISCAPTURECHECK_H
+#ifndef LLVM_CLANG_TOOLS_EXTRA_CLANG_TIDY_KOKKOS_ENSUREKOKKOSFUNCTIONCHECK_H
+#define LLVM_CLANG_TOOLS_EXTRA_CLANG_TIDY_KOKKOS_ENSUREKOKKOSFUNCTIONCHECK_H
 
 #include "clang-tidy/ClangTidyCheck.h"
-
-#include <string>
 
 namespace clang {
 namespace tidy {
 namespace kokkos {
 
-/// Check to detect when a lambda passed to a ::Kokkos::parallel_* implicitly
-/// captures the this pointer
-class ImplicitThisCaptureCheck : public ClangTidyCheck {
+/// Check that ensures user provided functions were properly annotated
+class EnsureKokkosFunctionCheck : public ClangTidyCheck {
 public:
-  ImplicitThisCaptureCheck(StringRef Name, ClangTidyContext *Context);
+  EnsureKokkosFunctionCheck(StringRef Name, ClangTidyContext *Context);
   void registerMatchers(ast_matchers::MatchFinder *Finder) override;
-  void storeOptions(ClangTidyOptions::OptionMap &Opts) override;
   void check(const ast_matchers::MatchFinder::MatchResult &Result) override;
+  void storeOptions(ClangTidyOptions::OptionMap &Opts) override;
+
 private:
+  std::string AllowedFunctionsRegex;
   int AllowIfExplicitHost;
 };
 
@@ -41,4 +40,4 @@ private:
 } // namespace tidy
 } // namespace clang
 
-#endif // LLVM_CLANG_TOOLS_EXTRA_CLANG_TIDY_KOKKOS_IMPLICITTHISCAPTURECHECK_H
+#endif // LLVM_CLANG_TOOLS_EXTRA_CLANG_TIDY_KOKKOS_ENSUREKOKKOSFUNCTIONCHECK_H

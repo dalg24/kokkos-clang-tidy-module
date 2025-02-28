@@ -1,0 +1,6 @@
+kokkos-ensure-kokkos-function.cpp:8:26: warning: function 'foo' called in 'f' is missing a KOKKOS_X_FUNCTION annotation [kokkos-ensure-kokkos-function]
+    8 | KOKKOS_FUNCTION void f(){foo();}
+      |                          ^
+kokkos-ensure-kokkos-function.cpp:7:6: note: Function 'foo' declared here
+    7 | void foo(){}
+      |      ^

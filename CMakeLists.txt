@@ -6,6 +6,8 @@ find_package(Clang REQUIRED)
 add_library(KokkosClangTidyModule MODULE
   src/KokkosTidyModule.cpp
 
+  src/EnsureKokkosFunctionCheck.cpp
+  src/EnsureKokkosFunctionCheck.h
   src/ImplicitThisCaptureCheck.cpp
   src/ImplicitThisCaptureCheck.h
   src/KokkosMatchers.cpp
