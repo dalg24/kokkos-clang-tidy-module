@@ -1,0 +1,10 @@
+kokkos-replace-view-stride-underscore.cpp:24:5: warning: Kokkos::View::stride_2() is deprecated, use Kokkos::View::stride(2) instead [kokkos-replace-view-stride-underscore]
+   24 |   v.stride_2() - v.stride_0();
+      |     ^~~~~~~~~~
+      |     stride(2)
+kokkos-replace-view-stride-underscore.cpp:24:5: note: FIX-IT applied suggested code changes
+kokkos-replace-view-stride-underscore.cpp:24:20: warning: Kokkos::View::stride_0() is deprecated, use Kokkos::View::stride(0) instead [kokkos-replace-view-stride-underscore]
+   24 |   v.stride_2() - v.stride_0();
+      |                    ^~~~~~~~~~
+      |                    stride(0)
+kokkos-replace-view-stride-underscore.cpp:24:20: note: FIX-IT applied suggested code changes

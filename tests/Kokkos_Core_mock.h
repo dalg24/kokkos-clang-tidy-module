@@ -113,4 +113,12 @@ public:
   RangePolicy(int, int) {}
 };
 
+template <class T, class... P>
+class View {
+public:
+  size_t stride_0() const { return 1; }
+  size_t stride_1() const { return 1; }
+  size_t stride_2() const { return 1; }
+};
+
 } // namespace Kokkos

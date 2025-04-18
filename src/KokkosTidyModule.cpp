@@ -17,6 +17,7 @@
 #include "clang-tidy/ClangTidy.h"
 #include "clang-tidy/ClangTidyModule.h"
 #include "clang-tidy/ClangTidyModuleRegistry.h"
+#include "ReplaceViewStrideUnderscoreCheck.h"
 #include "EnsureKokkosFunctionCheck.h"
 #include "ImplicitThisCaptureCheck.h"
 
@@ -27,6 +28,8 @@ namespace kokkos {
 class KokkosModule : public ClangTidyModule {
 public:
   void addCheckFactories(ClangTidyCheckFactories &CheckFactories) override {
+    CheckFactories.registerCheck<ReplaceViewStrideUnderscoreCheck>(
+        "kokkos-replace-view-stride-underscore");
     CheckFactories.registerCheck<EnsureKokkosFunctionCheck>(
         "kokkos-ensure-kokkos-function");
     CheckFactories.registerCheck<ImplicitThisCaptureCheck>(

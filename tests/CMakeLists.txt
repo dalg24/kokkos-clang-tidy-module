@@ -10,3 +10,4 @@ endfunction()
 
 add_run_clang_tidy_test(kokkos-ensure-kokkos-function)
 add_run_clang_tidy_test(kokkos-implicit-this-capture)
+add_run_clang_tidy_test(kokkos-replace-view-stride-underscore)
