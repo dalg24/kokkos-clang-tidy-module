@@ -46,7 +46,7 @@ AST_MATCHER(CallExpr, isKokkosParallelCall) {
   return false;
 }
 
-bool matchesAnnotation(Decl const* D, std::string const& RegExp);
+bool matchesAnnotation(Decl const *D, std::string const &RegExp);
 
 AST_MATCHER_P(Decl, matchesAttr, std::string, RegExp) {
   return matchesAnnotation(&Node, RegExp);

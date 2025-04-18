@@ -33,6 +33,7 @@ public:
   void registerMatchers(ast_matchers::MatchFinder *Finder) override;
   void storeOptions(ClangTidyOptions::OptionMap &Opts) override;
   void check(const ast_matchers::MatchFinder::MatchResult &Result) override;
+
 private:
   int AllowIfExplicitHost;
 };

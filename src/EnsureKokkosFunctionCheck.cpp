@@ -135,7 +135,8 @@ auto checkFunctorBody(CXXRecordDecl const *Functor, CallExpr const *CallSite) {
 EnsureKokkosFunctionCheck::EnsureKokkosFunctionCheck(StringRef Name,
                                                      ClangTidyContext *Context)
     : ClangTidyCheck(Name, Context) {
-  AllowIfExplicitHost = std::stoi(Options.get("AllowIfExplicitHost", "0").str());
+  AllowIfExplicitHost =
+      std::stoi(Options.get("AllowIfExplicitHost", "0").str());
   AllowedFunctionsRegex = Options.get("AllowedFunctionsRegex", "a^");
   // This can't be empty because the regex ast matchers assert !empty
   assert(!AllowedFunctionsRegex.empty());

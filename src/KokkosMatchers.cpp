@@ -34,7 +34,8 @@ TypedefNameDecl const *getTypedefFromFirstTemplateArg(Expr const *E) {
     return nullptr;
   }
 
-  auto const *TDT = TST->template_arguments()[0].getAsType()->getAs<TypedefType>();
+  auto const *TDT =
+      TST->template_arguments()[0].getAsType()->getAs<TypedefType>();
   if (TDT == nullptr) {
     return nullptr;
   }
@@ -43,7 +44,6 @@ TypedefNameDecl const *getTypedefFromFirstTemplateArg(Expr const *E) {
   return TDD;
 }
 } // namespace
-
 
 bool matchesAnnotation(Decl const *D, std::string const &RegExp) {
   assert(!RegExp.empty());
@@ -57,7 +57,6 @@ bool matchesAnnotation(Decl const *D, std::string const &RegExp) {
   }
   return false;
 }
-
 
 bool explicitlyDefaultHostExecutionSpace(CallExpr const *CE) {
   using namespace clang::ast_matchers;
