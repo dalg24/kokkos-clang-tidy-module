@@ -26,7 +26,7 @@ clang::tidy::kokkos::ReplaceViewStrideUnderscoreCheck::
 void clang::tidy::kokkos::ReplaceViewStrideUnderscoreCheck::registerMatchers(
     clang::ast_matchers::MatchFinder *Finder) {
   using namespace clang::ast_matchers;
-  auto ViewType = hasType(cxxRecordDecl(hasName("View")));
+  auto ViewType = hasType(cxxRecordDecl(hasName("::Kokkos::View")));
   auto StrideUnderscroreMethodDecl = cxxMethodDecl(matchesName("stride_[0-7]"));
   Finder->addMatcher(cxxMemberCallExpr(onImplicitObjectArgument(ViewType),
                                        callee(StrideUnderscroreMethodDecl))
