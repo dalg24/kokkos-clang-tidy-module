@@ -30,8 +30,6 @@ public:
   void addCheckFactories(ClangTidyCheckFactories &CheckFactories) override {
     CheckFactories.registerCheck<ReplaceViewStrideUnderscoreCheck>(
         "kokkos-replace-view-stride-underscore");
-    CheckFactories.registerCheck<EnsureKokkosFunctionCheck>(
-        "kokkos-ensure-kokkos-function");
     CheckFactories.registerCheck<ImplicitThisCaptureCheck>(
         "kokkos-implicit-this-capture");
   }
