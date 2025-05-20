@@ -14,7 +14,6 @@
 //
 //@HEADER
 
-#include "EnsureKokkosFunctionCheck.h"
 #include "ImplicitThisCaptureCheck.h"
 #include "ReplaceViewStrideUnderscoreCheck.h"
 #include "clang-tidy/ClangTidy.h"
