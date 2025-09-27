@@ -19,6 +19,13 @@
 
 #include "Kokkos_Core_mock.h"
 
+struct S {
+  using T = Kokkos::View<void>;
+  int i;
+  S() = default;
+  S(const Kokkos::View<void> v) : i(v.stride_0()) { i = v.stride_1(); }
+};
+
 void test() {
   Kokkos::View<int *> v;
   v.stride_2() - v.stride_0();

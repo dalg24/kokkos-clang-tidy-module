@@ -17,6 +17,7 @@
 #include "ReplaceViewStrideUnderscoreCheck.h"
 
 #include "clang/ASTMatchers/ASTMatchFinder.h"
+#include "clang/ASTMatchers/ASTMatchers.h"
 
 clang::tidy::kokkos::ReplaceViewStrideUnderscoreCheck::
     ReplaceViewStrideUnderscoreCheck(clang::StringRef Name,
@@ -26,12 +27,20 @@ clang::tidy::kokkos::ReplaceViewStrideUnderscoreCheck::
 void clang::tidy::kokkos::ReplaceViewStrideUnderscoreCheck::registerMatchers(
     clang::ast_matchers::MatchFinder *Finder) {
   using namespace clang::ast_matchers;
-  auto ViewType = hasType(cxxRecordDecl(hasName("::Kokkos::View")));
-  auto StrideUnderscroreMethodDecl = cxxMethodDecl(matchesName("stride_[0-7]"));
-  Finder->addMatcher(cxxMemberCallExpr(onImplicitObjectArgument(ViewType),
-                                       callee(StrideUnderscroreMethodDecl))
-                         .bind("X"),
-                     this);
+
+  auto IsKokkosView = qualType(hasDeclaration(
+      classTemplateSpecializationDecl(hasName("::Kokkos::View"))));
+
+  auto IsStrideUnderscoreMethod =
+      cxxMethodDecl(matchesName("stride_[0-7]$"), isConst());
+
+  Finder->addMatcher(
+      cxxMemberCallExpr(
+          callee(IsStrideUnderscoreMethod),
+          on(anyOf(hasType(IsKokkosView), hasType(pointsTo(IsKokkosView)),
+                   hasType(references(IsKokkosView)))))
+          .bind("X"),
+      this);
 }
 
 void clang::tidy::kokkos::ReplaceViewStrideUnderscoreCheck::check(

@@ -1,10 +1,20 @@
-kokkos-replace-view-stride-underscore.cpp:24:5: warning: Kokkos::View::stride_2() is deprecated, use Kokkos::View::stride(2) instead [kokkos-replace-view-stride-underscore]
-   24 |   v.stride_2() - v.stride_0();
+kokkos-replace-view-stride-underscore.cpp:26:39: warning: Kokkos::View::stride_0() is deprecated, use Kokkos::View::stride(0) instead [kokkos-replace-view-stride-underscore]
+   26 |   S(const Kokkos::View<void> v) : i(v.stride_0()) { i = v.stride_1(); }
+      |                                       ^~~~~~~~~~
+      |                                       stride(0)
+kokkos-replace-view-stride-underscore.cpp:26:39: note: FIX-IT applied suggested code changes
+kokkos-replace-view-stride-underscore.cpp:26:59: warning: Kokkos::View::stride_1() is deprecated, use Kokkos::View::stride(1) instead [kokkos-replace-view-stride-underscore]
+   26 |   S(const Kokkos::View<void> v) : i(v.stride_0()) { i = v.stride_1(); }
+      |                                                           ^~~~~~~~~~
+      |                                                           stride(1)
+kokkos-replace-view-stride-underscore.cpp:26:59: note: FIX-IT applied suggested code changes
+kokkos-replace-view-stride-underscore.cpp:31:5: warning: Kokkos::View::stride_2() is deprecated, use Kokkos::View::stride(2) instead [kokkos-replace-view-stride-underscore]
+   31 |   v.stride_2() - v.stride_0();
       |     ^~~~~~~~~~
       |     stride(2)
-kokkos-replace-view-stride-underscore.cpp:24:5: note: FIX-IT applied suggested code changes
-kokkos-replace-view-stride-underscore.cpp:24:20: warning: Kokkos::View::stride_0() is deprecated, use Kokkos::View::stride(0) instead [kokkos-replace-view-stride-underscore]
-   24 |   v.stride_2() - v.stride_0();
+kokkos-replace-view-stride-underscore.cpp:31:5: note: FIX-IT applied suggested code changes
+kokkos-replace-view-stride-underscore.cpp:31:20: warning: Kokkos::View::stride_0() is deprecated, use Kokkos::View::stride(0) instead [kokkos-replace-view-stride-underscore]
+   31 |   v.stride_2() - v.stride_0();
       |                    ^~~~~~~~~~
       |                    stride(0)
-kokkos-replace-view-stride-underscore.cpp:24:20: note: FIX-IT applied suggested code changes
+kokkos-replace-view-stride-underscore.cpp:31:20: note: FIX-IT applied suggested code changes
