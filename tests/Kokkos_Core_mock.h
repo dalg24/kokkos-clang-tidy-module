@@ -37,7 +37,7 @@ int printf(const char *format, ...);
 //
 #define KOKKOS_LAMBDA [=]
 #define KOKKOS_FUNCTION __attribute__((annotate("KOKKOS_FUNCTION")))
-#define KOKKOS_INLINE_FUNCTION __attribute__((annotate("KOKKOS_INLINE_FUNCTION")))
+#define KOKKOS_INLINE_FUNCTION __attribute__((annotate("KOKKOS_INLINE_FUNCTION"))) inline
 #define KOKKOS_FORCEINLINE_FUNCTION __attribute__((annotate("KOKKOS_FORCEINLINE_FUNCTION")))
 
 //
