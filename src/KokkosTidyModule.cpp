@@ -15,6 +15,7 @@
 //@HEADER
 
 #include "ImplicitThisCaptureCheck.h"
+#include "KokkosAnnotationPositionCheck.h"
 #include "ReplaceViewStrideUnderscoreCheck.h"
 #include "clang-tidy/ClangTidy.h"
 #include "clang-tidy/ClangTidyModule.h"
@@ -31,6 +32,8 @@ public:
         "kokkos-replace-view-stride-underscore");
     CheckFactories.registerCheck<ImplicitThisCaptureCheck>(
         "kokkos-implicit-this-capture");
+    CheckFactories.registerCheck<KokkosAnnotationPositionCheck>(
+        "kokkos-annotation-position");
   }
 };
 

@@ -10,6 +10,8 @@ add_library(KokkosClangTidyModule MODULE
   src/ReplaceViewStrideUnderscoreCheck.h
   src/ImplicitThisCaptureCheck.cpp
   src/ImplicitThisCaptureCheck.h
+  src/KokkosAnnotationPositionCheck.cpp
+  src/KokkosAnnotationPositionCheck.h
   src/KokkosMatchers.cpp
   src/KokkosMatchers.h
   )

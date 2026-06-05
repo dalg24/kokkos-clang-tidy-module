@@ -1,0 +1,60 @@
+kokkos-annotation-position.cpp:25:8: warning: 'KOKKOS_FUNCTION' should appear before 'static' [kokkos-annotation-position]
+   25 | static KOKKOS_FUNCTION void bad_static() {}
+      |        ^~~~~~~~~~~~~~~
+      | KOKKOS_FUNCTION
+kokkos-annotation-position.cpp:25:1: note: FIX-IT applied suggested code changes
+   25 | static KOKKOS_FUNCTION void bad_static() {}
+      | ^
+kokkos-annotation-position.cpp:25:8: note: FIX-IT applied suggested code changes
+   25 | static KOKKOS_FUNCTION void bad_static() {}
+      |        ^
+kokkos-annotation-position.cpp:26:8: warning: 'KOKKOS_INLINE_FUNCTION' should appear before 'inline' [kokkos-annotation-position]
+   26 | inline KOKKOS_INLINE_FUNCTION int bad_inline() { return 0; }
+      |        ^~~~~~~~~~~~~~~~~~~~~~
+      | KOKKOS_INLINE_FUNCTION
+kokkos-annotation-position.cpp:26:1: note: FIX-IT applied suggested code changes
+   26 | inline KOKKOS_INLINE_FUNCTION int bad_inline() { return 0; }
+      | ^
+kokkos-annotation-position.cpp:26:8: note: FIX-IT applied suggested code changes
+   26 | inline KOKKOS_INLINE_FUNCTION int bad_inline() { return 0; }
+      |        ^
+kokkos-annotation-position.cpp:27:8: warning: 'KOKKOS_FORCEINLINE_FUNCTION' should appear before 'static' [kokkos-annotation-position]
+   27 | static KOKKOS_FORCEINLINE_FUNCTION double bad_forceinline() { return 0.0; }
+      |        ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | KOKKOS_FORCEINLINE_FUNCTION
+kokkos-annotation-position.cpp:27:1: note: FIX-IT applied suggested code changes
+   27 | static KOKKOS_FORCEINLINE_FUNCTION double bad_forceinline() { return 0.0; }
+      | ^
+kokkos-annotation-position.cpp:27:8: note: FIX-IT applied suggested code changes
+   27 | static KOKKOS_FORCEINLINE_FUNCTION double bad_forceinline() { return 0.0; }
+      |        ^
+kokkos-annotation-position.cpp:34:10: warning: 'KOKKOS_INLINE_FUNCTION' should appear before 'static' [kokkos-annotation-position]
+   34 |   static KOKKOS_INLINE_FUNCTION void bad_method() {}
+      |          ^~~~~~~~~~~~~~~~~~~~~~
+      |   KOKKOS_INLINE_FUNCTION
+kokkos-annotation-position.cpp:34:3: note: FIX-IT applied suggested code changes
+   34 |   static KOKKOS_INLINE_FUNCTION void bad_method() {}
+      |   ^
+kokkos-annotation-position.cpp:34:10: note: FIX-IT applied suggested code changes
+   34 |   static KOKKOS_INLINE_FUNCTION void bad_method() {}
+      |          ^
+kokkos-annotation-position.cpp:35:10: warning: 'KOKKOS_FUNCTION' should appear before 'static' [kokkos-annotation-position]
+   35 |   static KOKKOS_FUNCTION int bad_static_method() { return 0; }
+      |          ^~~~~~~~~~~~~~~
+      |   KOKKOS_FUNCTION
+kokkos-annotation-position.cpp:35:3: note: FIX-IT applied suggested code changes
+   35 |   static KOKKOS_FUNCTION int bad_static_method() { return 0; }
+      |   ^
+kokkos-annotation-position.cpp:35:10: note: FIX-IT applied suggested code changes
+   35 |   static KOKKOS_FUNCTION int bad_static_method() { return 0; }
+      |          ^
+kokkos-annotation-position.cpp:39:15: warning: 'KOKKOS_FUNCTION' should appear before 'static' [kokkos-annotation-position]
+   39 | static inline KOKKOS_FUNCTION void bad_multi_specifier() {}
+      |               ^~~~~~~~~~~~~~~
+      | KOKKOS_FUNCTION
+kokkos-annotation-position.cpp:39:1: note: FIX-IT applied suggested code changes
+   39 | static inline KOKKOS_FUNCTION void bad_multi_specifier() {}
+      | ^
+kokkos-annotation-position.cpp:39:15: note: FIX-IT applied suggested code changes
+   39 | static inline KOKKOS_FUNCTION void bad_multi_specifier() {}
+      |               ^
